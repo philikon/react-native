@@ -140,6 +140,9 @@ function setUpXHR() {
   polyfillGlobal('XMLHttpRequest', require('XMLHttpRequest'));
   polyfillGlobal('FormData', require('FormData'));
 
+  polyfillGlobal('Blob', require('Blob'));
+  polyfillGlobal('URL', require('BlobURL'));
+
   var fetchPolyfill = require('fetch');
   polyfillGlobal('fetch', fetchPolyfill.fetch);
   polyfillGlobal('Headers', fetchPolyfill.Headers);
