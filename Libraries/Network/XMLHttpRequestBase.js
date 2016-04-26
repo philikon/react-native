@@ -13,6 +13,7 @@
 
 var RCTNetworking = require('RCTNetworking');
 var RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
+const XMLHttpRequestEventTarget = require('XMLHttpRequestEventTarget');
 
 const EventTarget = require('event-target-shim');
 const invariant = require('fbjs/lib/invariant');
@@ -37,26 +38,7 @@ const SUPPORTED_RESPONSE_TYPES = {
   '': true,
 };
 
-const REQUEST_EVENTS = [
-  'abort',
-  'error',
-  'load',
-  'loadstart',
-  'progress',
-  'timeout',
-  'loadend',
-];
-
-const XHR_EVENTS = REQUEST_EVENTS.concat('readystatechange');
-
-class XMLHttpRequestEventTarget extends EventTarget(REQUEST_EVENTS) {
-  onload: ?Function;
-  onloadstart: ?Function;
-  onprogress: ?Function;
-  ontimeout: ?Function;
-  onerror: ?Function;
-  onloadend: ?Function;
-}
+const XHR_EVENTS = XMLHttpRequestEventTarget.Events.concat('readystatechange');
 
 /**
  * Shared base for platform-specific XMLHttpRequest implementations.
