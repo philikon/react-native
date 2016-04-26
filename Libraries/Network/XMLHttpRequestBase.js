@@ -30,7 +30,7 @@ const DONE = 4;
 
 const SUPPORTED_RESPONSE_TYPES = {
   arraybuffer: typeof global.ArrayBuffer === 'function',
-  blob: typeof global.Blob === 'function',
+  blob: true,
   document: false,
   json: true,
   text: true,
@@ -141,7 +141,8 @@ class XMLHttpRequestBase extends EventTarget(XHR_EVENTS) {
 
   // $FlowIssue #10784535
   set responseType(responseType: ResponseType): void {
-    if (this.readyState > HEADERS_RECEIVED) {
+    if (this.readyState > HEADERS_RECEIVED ||
+        responseType === 'blob' && this.readyState > OPENED) {
       throw new Error(
         "Failed to set the 'responseType' property on 'XMLHttpRequest': The " +
         "response type cannot be set if the object's state is LOADING or DONE"
