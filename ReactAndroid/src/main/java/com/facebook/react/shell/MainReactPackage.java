@@ -18,6 +18,7 @@ import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.modules.appstate.AppStateModule;
+import com.facebook.react.modules.blob.BlobModule;
 import com.facebook.react.modules.camera.CameraRollManager;
 import com.facebook.react.modules.camera.ImageEditingManager;
 import com.facebook.react.modules.camera.ImageStoreManager;
@@ -72,6 +73,7 @@ public class MainReactPackage implements ReactPackage {
     return Arrays.<NativeModule>asList(
       new AppStateModule(reactContext),
       new AsyncStorageModule(reactContext),
+      new BlobModule(reactContext),
       new CameraRollManager(reactContext),
       new ClipboardModule(reactContext),
       new DatePickerDialogModule(reactContext),

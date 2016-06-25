@@ -194,6 +194,10 @@ function setUpXHR(): void {
   defineLazyProperty(global, 'Response', () => require('fetch').Response);
 
   defineLazyProperty(global, 'WebSocket', () => require('WebSocket'));
+
+  defineLazyProperty(global, 'WebSocket', () => require('WebSocket'));
+  defineLazyProperty(global, 'Blob', () => require('Blob'));
+  defineLazyProperty(global, 'URL', () => require('BlobURL'));
 }
 
 function setUpGeolocation(): void {

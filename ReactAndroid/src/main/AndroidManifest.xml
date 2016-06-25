@@ -2,6 +2,11 @@
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
-    <application />
+    <application>
+        <provider
+            android:authorities="com.facebook.react.blobs"
+            android:name="com.facebook.react.modules.blob.BlobProvider"
+            />
+    </application>
 
 </manifest>
